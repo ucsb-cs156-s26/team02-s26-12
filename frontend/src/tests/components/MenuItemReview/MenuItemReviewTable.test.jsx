@@ -176,7 +176,7 @@ describe("MenuItemReviewTable tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() =>
-      expect(mockedNavigate).toHaveBeenCalledWith("/menuitemreviews/edit/1"),
+      expect(mockedNavigate).toHaveBeenCalledWith("/menuitemreview/edit/1"),
     );
   });
 

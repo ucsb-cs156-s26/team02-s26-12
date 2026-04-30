@@ -169,6 +169,30 @@ describe("AppNavbar tests", () => {
     expect(link.getAttribute("href")).toBe("/ucsbdates");
   });
 
+  test("renders the menuitemreview link correctly", async () => {
+    const currentUser = currentUserFixtures.userOnly;
+    const systemInfo = systemInfoFixtures.showingBoth;
+
+    const doLogin = vi.fn();
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <AppNavbar
+            currentUser={currentUser}
+            systemInfo={systemInfo}
+            doLogin={doLogin}
+          />
+        </MemoryRouter>
+      </QueryClientProvider>,
+    );
+
+    await screen.findByText("MenuItemReview");
+    const link = screen.getByText("MenuItemReview");
+    expect(link).toBeInTheDocument();
+    expect(link.getAttribute("href")).toBe("/menuitemreview");
+  });
+
   test("renders the restaurants link correctly", async () => {
     const currentUser = currentUserFixtures.userOnly;
     const systemInfo = systemInfoFixtures.showingBoth;
@@ -211,6 +235,7 @@ describe("AppNavbar tests", () => {
     );
 
     expect(screen.queryByText("Restaurants")).not.toBeInTheDocument();
+    expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
     expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
   });
 
