@@ -1,8 +1,8 @@
 import "../src/index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
-import { initialize, mswLoader } from 'msw-storybook-addon'
+import { initialize, mswLoader } from "msw-storybook-addon";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router";
@@ -16,13 +16,13 @@ const mockServiceWorkerUrl = isLocalhost ? "mockServiceWorker.js" : "https://" +
 
 // Initialize MSW
 
-//initialize(
- // {
-  //  serviceWorker: {
-//      url: mockServiceWorkerUrl
-//    }
-//  }
-//);
+initialize(
+  {
+    serviceWorker: {
+      url: mockServiceWorkerUrl
+    }
+  }
+);
 
 
 // Per https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking
@@ -50,7 +50,7 @@ const preview = {
       },
     },
   },
-  //loaders: [mswLoader]
+  loaders: [mswLoader]
 };
 
 export default preview;
