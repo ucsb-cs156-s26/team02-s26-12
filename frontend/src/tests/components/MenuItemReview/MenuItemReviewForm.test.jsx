@@ -147,7 +147,9 @@ describe("MenuItemReviewForm tests", () => {
     expect(screen.getByTestId(`${testId}-dateReviewed`).value).toBe(
       initial.dateReviewed,
     );
-    expect(screen.getByTestId(`${testId}-comments`).value).toBe(initial.comments);
+    expect(screen.getByTestId(`${testId}-comments`).value).toBe(
+      initial.comments,
+    );
   });
 
   test("submits form with valid data", async () => {
