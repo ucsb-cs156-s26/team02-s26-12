@@ -19,7 +19,8 @@
     "check-format": "prettier --check \"src/**/*.{js,jsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_02110ba82c001ce"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.17",
@@ -33,6 +34,7 @@
     "react-dom": "^19.2.3",
     "react-hook-form": "^7.71.1",
     "react-router": "^7.12.0",
+    "react-router-dom": "7.14.2",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
@@ -42,7 +44,7 @@
     "@rollup/plugin-alias": "^6.0.0",
     "@storybook/addon-links": "10.1.11",
     "@storybook/builder-vite": "10.1.11",
-    "@storybook/react-vite": "10.1.11",
+    "@storybook/react-vite": "^10.1.11",
     "@storybook/react-webpack5": "10.1.11",
     "@stryker-mutator/vitest-runner": "^9.4.0",
     "@testing-library/react": "^16.3.1",

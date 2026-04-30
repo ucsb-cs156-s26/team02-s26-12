@@ -25,16 +25,14 @@ const menuItemReviewFixtures = {
       comments: "Too salty",
     },
   ],
-  oneReview: [
-    {
-      id: 1,
-      itemId: 104,
-      reviewerEmail: "student@ucsb.edu",
-      stars: 4,
-      dateReviewed: "2022-05-05T12:00:00",
-      comments: "Pretty good",
-    },
-  ],
+  oneReview: {
+    id: 1,
+    itemId: 104,
+    reviewerEmail: "student@ucsb.edu",
+    stars: 4,
+    dateReviewed: "2022-05-05T12:00:00",
+    comments: "Pretty good",
+  },
 };
 
 export { menuItemReviewFixtures };
