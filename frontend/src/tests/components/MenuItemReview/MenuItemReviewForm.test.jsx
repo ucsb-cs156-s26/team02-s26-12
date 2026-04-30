@@ -127,43 +127,27 @@ describe("MenuItemReviewForm tests", () => {
   });
 
   test("renders correctly with initial contents", async () => {
+    const initial = menuItemReviewFixtures.oneReview;
     render(
       <Router>
-        <MenuItemReviewForm
-          initialContents={menuItemReviewFixtures.oneReview}
-        />
+        <MenuItemReviewForm initialContents={initial} />
       </Router>,
     );
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
-    const expectedIdValue =
-      menuItemReviewFixtures.oneReview.id === undefined
-        ? ""
-        : String(menuItemReviewFixtures.oneReview.id);
-    const expectedItemIdValue =
-      menuItemReviewFixtures.oneReview.itemId === undefined
-        ? ""
-        : String(menuItemReviewFixtures.oneReview.itemId);
-    const expectedReviewerEmailValue =
-      menuItemReviewFixtures.oneReview.reviewerEmail ?? "";
-    const expectedStarsValue =
-      menuItemReviewFixtures.oneReview.stars === undefined
-        ? ""
-        : String(menuItemReviewFixtures.oneReview.stars);
-    const expectedCommentsValue =
-      menuItemReviewFixtures.oneReview.comments ?? "";
-    expect(screen.getByTestId(`${testId}-id`).value).toBe(expectedIdValue);
+    expect(screen.getByTestId(`${testId}-id`).value).toBe(String(initial.id));
     expect(screen.getByTestId(`${testId}-itemId`).value).toBe(
-      expectedItemIdValue,
+      String(initial.itemId),
     );
     expect(screen.getByTestId(`${testId}-reviewerEmail`).value).toBe(
-      expectedReviewerEmailValue,
+      initial.reviewerEmail,
     );
     expect(screen.getByTestId(`${testId}-stars`).value).toBe(
-      expectedStarsValue,
+      String(initial.stars),
     );
-    expect(screen.getByTestId(`${testId}-comments`).value).toBe(
-      expectedCommentsValue,
+    expect(screen.getByTestId(`${testId}-dateReviewed`).value).toBe(
+      initial.dateReviewed,
     );
+    expect(screen.getByTestId(`${testId}-comments`).value).toBe(initial.comments);
   });
 
   test("submits form with valid data", async () => {
