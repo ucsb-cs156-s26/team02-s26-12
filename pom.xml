@@ -19,7 +19,7 @@
 
   <!-- (3) <artifactId/> -->
 
-  <artifactId>team01</artifactId>
+  <artifactId>team02</artifactId>
 
   <!-- (4) <version/> -->
   <version>1.0.0</version>
@@ -215,7 +215,6 @@
       <plugin>
         <groupId>com.cosium.code</groupId>
         <artifactId>git-code-format-maven-plugin</artifactId>
-        <configuration><skip>true</skip></configuration>
         <version>5.3</version>
         <executions>
           <!-- On commit, format the modified files -->
@@ -388,7 +387,6 @@
           </execution>
         </executions>
         <configuration>
-          <failOnNoGitDirectory>false</failOnNoGitDirectory>
           <generateGitPropertiesFile>true</generateGitPropertiesFile>
           <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
           <commitIdGenerationMode>full</commitIdGenerationMode>
