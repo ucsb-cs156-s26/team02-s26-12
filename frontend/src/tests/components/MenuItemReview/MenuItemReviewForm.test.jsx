@@ -1,12 +1,12 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
 import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router";
 import { vi } from "vitest";
 
 const mockedNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual("react-router-dom");
+vi.mock("react-router", async () => {
+  const actual = await vi.importActual("react-router");
   return {
     ...actual,
     useNavigate: () => mockedNavigate,
@@ -135,20 +135,29 @@ describe("MenuItemReviewForm tests", () => {
       </Router>,
     );
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-id`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.id),
-    );
-    expect(screen.getByTestId(`${testId}-itemId`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.itemId),
-    );
+    const expectedIdValue =
+      menuItemReviewFixtures.oneReview.id === undefined
+        ? ""
+        : String(menuItemReviewFixtures.oneReview.id);
+    const expectedItemIdValue =
+      menuItemReviewFixtures.oneReview.itemId === undefined
+        ? ""
+        : String(menuItemReviewFixtures.oneReview.itemId);
+    const expectedReviewerEmailValue =
+      menuItemReviewFixtures.oneReview.reviewerEmail ?? "";
+    const expectedStarsValue =
+      menuItemReviewFixtures.oneReview.stars === undefined
+        ? ""
+        : String(menuItemReviewFixtures.oneReview.stars);
+    const expectedCommentsValue = menuItemReviewFixtures.oneReview.comments ?? "";
+    expect(screen.getByTestId(`${testId}-id`).value).toBe(expectedIdValue);
+    expect(screen.getByTestId(`${testId}-itemId`).value).toBe(expectedItemIdValue);
     expect(screen.getByTestId(`${testId}-reviewerEmail`).value).toBe(
-      menuItemReviewFixtures.oneReview.reviewerEmail,
+      expectedReviewerEmailValue,
     );
-    expect(screen.getByTestId(`${testId}-stars`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.stars),
-    );
+    expect(screen.getByTestId(`${testId}-stars`).value).toBe(expectedStarsValue);
     expect(screen.getByTestId(`${testId}-comments`).value).toBe(
-      menuItemReviewFixtures.oneReview.comments,
+      expectedCommentsValue,
     );
   });
 

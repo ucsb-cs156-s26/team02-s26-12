@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
     info =
         @Info(
-            title = "Swagger: UCSB CMPSC 156 team01",
+            title = "Swagger: UCSB CMPSC 156 team02",
             description =
                 """
     <p><a href='/'>Home Page</a></p>
