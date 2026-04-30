@@ -1,12 +1,12 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
 import { menuItemReviewFixtures } from "fixtures/menuItemReviewFixtures";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router";
 import { vi } from "vitest";
 
 const mockedNavigate = vi.fn();
-vi.mock("react-router-dom", async () => {
-  const actual = await vi.importActual("react-router-dom");
+vi.mock("react-router", async () => {
+  const actual = await vi.importActual("react-router");
   return {
     ...actual,
     useNavigate: () => mockedNavigate,
@@ -127,28 +127,28 @@ describe("MenuItemReviewForm tests", () => {
   });
 
   test("renders correctly with initial contents", async () => {
+    const initial = menuItemReviewFixtures.oneReview;
     render(
       <Router>
-        <MenuItemReviewForm
-          initialContents={menuItemReviewFixtures.oneReview}
-        />
+        <MenuItemReviewForm initialContents={initial} />
       </Router>,
     );
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-id`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.id),
-    );
+    expect(screen.getByTestId(`${testId}-id`).value).toBe(String(initial.id));
     expect(screen.getByTestId(`${testId}-itemId`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.itemId),
+      String(initial.itemId),
     );
     expect(screen.getByTestId(`${testId}-reviewerEmail`).value).toBe(
-      menuItemReviewFixtures.oneReview.reviewerEmail,
+      initial.reviewerEmail,
     );
     expect(screen.getByTestId(`${testId}-stars`).value).toBe(
-      String(menuItemReviewFixtures.oneReview.stars),
+      String(initial.stars),
+    );
+    expect(screen.getByTestId(`${testId}-dateReviewed`).value).toBe(
+      initial.dateReviewed,
     );
     expect(screen.getByTestId(`${testId}-comments`).value).toBe(
-      menuItemReviewFixtures.oneReview.comments,
+      initial.comments,
     );
   });
 

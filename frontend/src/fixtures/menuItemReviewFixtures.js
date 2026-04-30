@@ -30,7 +30,7 @@ const menuItemReviewFixtures = {
     itemId: 104,
     reviewerEmail: "student@ucsb.edu",
     stars: 4,
-    dateReviewed: "2022-05-05T12:00:00",
+    dateReviewed: "2022-05-05T12:00",
     comments: "Pretty good",
   },
 };
