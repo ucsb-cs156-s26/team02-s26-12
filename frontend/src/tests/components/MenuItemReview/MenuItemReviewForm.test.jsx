@@ -149,13 +149,18 @@ describe("MenuItemReviewForm tests", () => {
       menuItemReviewFixtures.oneReview.stars === undefined
         ? ""
         : String(menuItemReviewFixtures.oneReview.stars);
-    const expectedCommentsValue = menuItemReviewFixtures.oneReview.comments ?? "";
+    const expectedCommentsValue =
+      menuItemReviewFixtures.oneReview.comments ?? "";
     expect(screen.getByTestId(`${testId}-id`).value).toBe(expectedIdValue);
-    expect(screen.getByTestId(`${testId}-itemId`).value).toBe(expectedItemIdValue);
+    expect(screen.getByTestId(`${testId}-itemId`).value).toBe(
+      expectedItemIdValue,
+    );
     expect(screen.getByTestId(`${testId}-reviewerEmail`).value).toBe(
       expectedReviewerEmailValue,
     );
-    expect(screen.getByTestId(`${testId}-stars`).value).toBe(expectedStarsValue);
+    expect(screen.getByTestId(`${testId}-stars`).value).toBe(
+      expectedStarsValue,
+    );
     expect(screen.getByTestId(`${testId}-comments`).value).toBe(
       expectedCommentsValue,
     );
