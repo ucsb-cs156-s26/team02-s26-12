@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s26/team02-s26-12
 owner: ucsb-cs156-s26
 repo_name: team02-s26-12
-pull_requests: []
+pull_requests: [{"author":{"id":"U_kgDOBw_Igg","is_bot":false,"login":"ArjunLovesCoding","name":""},"headRefName":"am-MenuItemReview-CopyPlaceHoldersForPages","number":68,"title":"Add MenuItemReview placeholder pages, routes, and navbar (#33)","url":"https://github.com/ucsb-cs156-s26/team02-s26-12/pull/68"}]
