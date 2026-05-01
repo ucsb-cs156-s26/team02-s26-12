@@ -18,7 +18,14 @@ vi.mock("react-router", async () => {
 describe("HelpRequestForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Requester Email", "Team Id", "Table or Breakout Room", "Request Time (iso format)", "Explanation", "Solved"];
+  const expectedHeaders = [
+    "Requester Email",
+    "Team Id",
+    "Table or Breakout Room",
+    "Request Time (iso format)",
+    "Explanation",
+    "Solved",
+  ];
   const testId = "HelpRequestForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -42,7 +49,9 @@ describe("HelpRequestForm tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <HelpRequestForm initialContents={helpRequestFixtures.oneHelpRequest} />
+          <HelpRequestForm
+            initialContents={helpRequestFixtures.oneHelpRequest}
+          />
         </Router>
       </QueryClientProvider>,
     );
@@ -89,12 +98,16 @@ describe("HelpRequestForm tests", () => {
 
     await screen.findByText(/Requester Email is required./);
     expect(screen.getByText(/Team Id is required./)).toBeInTheDocument();
-    expect(screen.getByText(/Table or Breakout Room is required./)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Table or Breakout Room is required./),
+    ).toBeInTheDocument();
     expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
     expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
 
     const requesterEmailInput = screen.getByTestId(`${testId}-requesterEmail`);
-    fireEvent.change(requesterEmailInput, { target: { value: "a".repeat(256) } });
+    fireEvent.change(requesterEmailInput, {
+      target: { value: "a".repeat(256) },
+    });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
