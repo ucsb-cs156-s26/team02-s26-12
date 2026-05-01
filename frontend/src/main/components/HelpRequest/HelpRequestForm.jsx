@@ -19,6 +19,11 @@ function HelpRequestForm({
 
   const testIdPrefix = "HelpRequestForm";
 
+  // Stryker disable Regex
+  const isodate_regex =
+    /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+  // Stryker restore Regex
+
   return (
     <Form onSubmit={handleSubmit(submitAction)}>
       {initialContents && (
@@ -97,15 +102,32 @@ function HelpRequestForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      {/* <Form.Group className="mb-3">
-        <Form.Label htmlFor="requestTime">Request Time</Form.Label>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="requestTime">Request Time (iso format)</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "RequestTime"}
-          id="RequestTime"
-          type="text"
+          data-testid="HelpRequestForm-requestTime"
+          id="requestTime"
+          type="datetime-local"
           isInvalid={Boolean(errors.requestTime)}
           {...register("requestTime", {
-            required: "Request Time is required.",
+            required: true,
+            pattern: isodate_regex,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.requestTime && "Request Time is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="explanation">Explanation</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-explanation"}
+          id="explanation"
+          type="text"
+          isInvalid={Boolean(errors.explanation)}
+          {...register("explanation", {
+            required: "Explanation is required.",
             maxLength: {
               value: 255,
               message: "Max length 255 characters",
@@ -113,9 +135,23 @@ function HelpRequestForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.requestTime?.message}
+          {errors.explanation?.message}
         </Form.Control.Feedback>
-      </Form.Group> */}
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="solved">Solved</Form.Label>
+        <Form.Check
+          data-testid={testIdPrefix + "-solved"}
+          id="solved"
+          type="checkbox"
+          isInvalid={Boolean(errors.solved)}
+          {...register("solved")}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.solved?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
