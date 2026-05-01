@@ -63,16 +63,11 @@ function HelpRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="teamId">Team Id</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-teamId"}
           id="teamId"
           type="text"
           isInvalid={Boolean(errors.teamId)}
           {...register("teamId", {
             required: "Team Id is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -85,16 +80,11 @@ function HelpRequestForm({
           Table or Breakout Room
         </Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
           id="tableOrBreakoutRoom"
           type="text"
           isInvalid={Boolean(errors.tableOrBreakoutRoom)}
           {...register("tableOrBreakoutRoom", {
             required: "Table or Breakout Room is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -122,16 +112,11 @@ function HelpRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="explanation">Explanation</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-explanation"}
           id="explanation"
           type="text"
           isInvalid={Boolean(errors.explanation)}
           {...register("explanation", {
             required: "Explanation is required.",
-            maxLength: {
-              value: 255,
-              message: "Max length 255 characters",
-            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -142,7 +127,6 @@ function HelpRequestForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="solved">Solved</Form.Label>
         <Form.Check
-          data-testid={testIdPrefix + "-solved"}
           id="solved"
           type="checkbox"
           isInvalid={Boolean(errors.solved)}
@@ -153,7 +137,7 @@ function HelpRequestForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+      <Button type="submit" >
         {buttonLabel}
       </Button>
       <Button
