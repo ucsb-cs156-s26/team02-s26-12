@@ -15,7 +15,8 @@ const Template = () => <RestaurantEditPage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
-  msw: [
+  msw: {
+    handlers: [
     http.get("/api/currentUser", () => {
       return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
         status: 200,
@@ -39,4 +40,5 @@ Default.parameters = {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],
+  },
 };

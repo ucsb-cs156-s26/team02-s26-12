@@ -15,7 +15,8 @@ const Template = () => <UCSBDatesIndexPage storybook={true} />;
 
 export const Empty = Template.bind({});
 Empty.parameters = {
-  msw: [
+  msw: {
+    handlers: [
     http.get("/api/currentUser", () => {
       return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
         status: 200,
@@ -30,12 +31,14 @@ Empty.parameters = {
       return HttpResponse.json([], { status: 200 });
     }),
   ],
+  },
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
 
 ThreeItemsOrdinaryUser.parameters = {
-  msw: [
+  msw: {
+    handlers: [
     http.get("/api/currentUser", () => {
       return HttpResponse.json(apiCurrentUserFixtures.userOnly);
     }),
@@ -46,12 +49,14 @@ ThreeItemsOrdinaryUser.parameters = {
       return HttpResponse.json(ucsbDatesFixtures.threeDates);
     }),
   ],
+  },
 };
 
 export const ThreeItemsAdminUser = Template.bind({});
 
 ThreeItemsAdminUser.parameters = {
-  msw: [
+  msw: {
+    handlers: [
     http.get("/api/currentUser", () => {
       return HttpResponse.json(apiCurrentUserFixtures.adminUser);
     }),
@@ -65,4 +70,5 @@ ThreeItemsAdminUser.parameters = {
       return HttpResponse.json({}, { status: 200 });
     }),
   ],
+  },
 };

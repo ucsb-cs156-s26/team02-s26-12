@@ -34,7 +34,8 @@ FourItemsAdminUser.args = {
 };
 
 FourItemsAdminUser.parameters = {
-  msw: [
+  msw: {
+    handlers: [
     http.delete("/api/restaurants", () => {
       return HttpResponse.json(
         { message: "Url deleted successfully" },
@@ -42,4 +43,5 @@ FourItemsAdminUser.parameters = {
       );
     }),
   ],
+  },
 };
