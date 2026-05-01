@@ -1,14 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
+import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 import { BrowserRouter as Router } from "react-router";
 import { vi } from "vitest";
-
-const oneMenuItem = {
-  id: 7,
-  diningCommonsCode: "ortega",
-  name: "Chicken Caesar Salad",
-  station: "Entrees",
-};
 
 const mockedNavigate = vi.fn();
 vi.mock("react-router", async () => {
@@ -93,22 +87,19 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
   });
 
   test("renders correctly with initial contents", async () => {
+    const initial = ucsbDiningCommonsMenuItemFixtures.oneItem;
     render(
       <Router>
-        <UCSBDiningCommonsMenuItemForm initialContents={oneMenuItem} />
+        <UCSBDiningCommonsMenuItemForm initialContents={initial} />
       </Router>,
     );
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
-    expect(screen.getByTestId(`${testId}-id`).value).toBe(
-      String(oneMenuItem.id),
-    );
+    expect(screen.getByTestId(`${testId}-id`).value).toBe(String(initial.id));
     expect(screen.getByTestId(`${testId}-diningCommonsCode`).value).toBe(
-      oneMenuItem.diningCommonsCode,
+      initial.diningCommonsCode,
     );
-    expect(screen.getByTestId(`${testId}-name`).value).toBe(oneMenuItem.name);
-    expect(screen.getByTestId(`${testId}-station`).value).toBe(
-      oneMenuItem.station,
-    );
+    expect(screen.getByTestId(`${testId}-name`).value).toBe(initial.name);
+    expect(screen.getByTestId(`${testId}-station`).value).toBe(initial.station);
   });
 
   test("submits form with valid data", async () => {
