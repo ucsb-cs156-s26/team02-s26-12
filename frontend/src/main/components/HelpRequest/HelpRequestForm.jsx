@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 function HelpRequestForm({
   initialContents,
   submitAction,
-  buttonLabel = "Create"
+  buttonLabel = "Create",
 }) {
   // Stryker disable all
   const {
@@ -35,7 +35,6 @@ function HelpRequestForm({
         </Form.Group>
       )}
 
-
       <Form.Group className="mb-3">
         <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
         <Form.Control
@@ -55,9 +54,6 @@ function HelpRequestForm({
           {errors.requesterEmail?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
-
-
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="teamId">Team Id</Form.Label>
@@ -80,7 +76,9 @@ function HelpRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="tableOrBreakoutRoom">Table or Breakout Room</Form.Label>
+        <Form.Label htmlFor="tableOrBreakoutRoom">
+          Table or Breakout Room
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-tableOrBreakoutRoom"}
           id="tableOrBreakoutRoom"
@@ -98,10 +96,6 @@ function HelpRequestForm({
           {errors.tableOrBreakoutRoom?.message}
         </Form.Control.Feedback>
       </Form.Group>
-
-
-
-
 
       {/* <Form.Group className="mb-3">
         <Form.Label htmlFor="requestTime">Request Time</Form.Label>
@@ -122,10 +116,6 @@ function HelpRequestForm({
           {errors.requestTime?.message}
         </Form.Control.Feedback>
       </Form.Group> */}
-
-
-
-
 
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
