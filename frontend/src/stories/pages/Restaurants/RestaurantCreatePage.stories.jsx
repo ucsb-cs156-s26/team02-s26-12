@@ -16,19 +16,19 @@ export const Default = Template.bind({});
 Default.parameters = {
   msw: {
     handlers: [
-    http.get("/api/currentUser", () => {
-      return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
-        status: 200,
-      });
-    }),
-    http.get("/api/systemInfo", () => {
-      return HttpResponse.json(systemInfoFixtures.showingNeither, {
-        status: 200,
-      });
-    }),
-    http.post("/api/restaurants/post", () => {
-      return HttpResponse.json({}, { status: 200 });
-    }),
-  ],
+      http.get("/api/currentUser", () => {
+        return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
+          status: 200,
+        });
+      }),
+      http.get("/api/systemInfo", () => {
+        return HttpResponse.json(systemInfoFixtures.showingNeither, {
+          status: 200,
+        });
+      }),
+      http.post("/api/restaurants/post", () => {
+        return HttpResponse.json({}, { status: 200 });
+      }),
+    ],
   },
 };
