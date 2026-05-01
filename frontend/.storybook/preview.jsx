@@ -5,22 +5,32 @@ import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router";
 import { ToastContainer } from "react-toastify";
+import { initialize, mswLoader } from "msw-storybook-addon";
 
-const queryClient = new QueryClient();
+initialize({
+  onUnhandledRequest: "bypass",
+});
 
 // Per https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking
-// Here, we provide the context needed for some of the components,
-// e.g. the ones that rely on currentUser
-
+// Fresh client per story: avoids stale React Query errors and disables retries (each
+// retry re-toasts from useBackend on failure).
 export const decorators = [
-  (Story) => (
-    <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
-        <ToastContainer />
-        <Story />
-      </MemoryRouter>
-    </QueryClientProvider>
-  )
+  (Story) => {
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: { retry: false },
+        mutations: { retry: false },
+      },
+    });
+    return (
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ToastContainer />
+          <Story />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+  },
 ];
 
 /** @type { import('@storybook/react').Preview } */
@@ -33,6 +43,7 @@ const preview = {
       },
     },
   },
+  loaders: [mswLoader],
 };
 
 export default preview;

@@ -34,12 +34,14 @@ ThreeItemsAdminUser.args = {
 };
 
 ThreeItemsAdminUser.parameters = {
-  msw: [
-    http.delete("/api/MenuItemReview", () => {
-      return HttpResponse.json(
-        { message: "MenuItemReview deleted successfully" },
-        { status: 200 },
-      );
-    }),
-  ],
+  msw: {
+    handlers: [
+      http.delete("*/api/MenuItemReview", () => {
+        return HttpResponse.json(
+          { message: "MenuItemReview deleted successfully" },
+          { status: 200 },
+        );
+      }),
+    ],
+  },
 };

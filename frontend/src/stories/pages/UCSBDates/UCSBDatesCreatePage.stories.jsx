@@ -14,19 +14,21 @@ const Template = () => <UCSBDatesCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
-  msw: [
-    http.get("/api/currentUser", () => {
-      return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
-        status: 200,
-      });
-    }),
-    http.get("/api/systemInfo", () => {
-      return HttpResponse.json(systemInfoFixtures.showingNeither, {
-        status: 200,
-      });
-    }),
-    http.post("/api/ucsbdates/post", () => {
-      return HttpResponse.json({}, { status: 200 });
-    }),
-  ],
+  msw: {
+    handlers: [
+      http.get("/api/currentUser", () => {
+        return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
+          status: 200,
+        });
+      }),
+      http.get("/api/systemInfo", () => {
+        return HttpResponse.json(systemInfoFixtures.showingNeither, {
+          status: 200,
+        });
+      }),
+      http.post("/api/ucsbdates/post", () => {
+        return HttpResponse.json({}, { status: 200 });
+      }),
+    ],
+  },
 };

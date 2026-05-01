@@ -33,9 +33,11 @@ ThreeItemsAdminUser.args = {
 };
 
 ThreeItemsAdminUser.parameters = {
-  msw: [
-    http.delete("/api/ucsbdates", () => {
-      return HttpResponse.json({}, { status: 200 });
-    }),
-  ],
+  msw: {
+    handlers: [
+      http.delete("/api/ucsbdates", () => {
+        return HttpResponse.json({}, { status: 200 });
+      }),
+    ],
+  },
 };
