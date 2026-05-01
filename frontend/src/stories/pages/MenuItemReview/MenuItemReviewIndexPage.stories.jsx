@@ -17,17 +17,17 @@ export const Empty = Template.bind({});
 Empty.parameters = {
   msw: {
     handlers: [
-      http.get("/api/currentUser", () => {
+      http.get("*/api/currentUser", () => {
         return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
           status: 200,
         });
       }),
-      http.get("/api/systemInfo", () => {
+      http.get("*/api/systemInfo", () => {
         return HttpResponse.json(systemInfoFixtures.showingNeither, {
           status: 200,
         });
       }),
-      http.get("/api/MenuItemReview/all", () => {
+      http.get("*/api/MenuItemReview/all", () => {
         return HttpResponse.json([], { status: 200 });
       }),
     ],
@@ -39,13 +39,13 @@ export const ThreeItemsOrdinaryUser = Template.bind({});
 ThreeItemsOrdinaryUser.parameters = {
   msw: {
     handlers: [
-      http.get("/api/currentUser", () => {
+      http.get("*/api/currentUser", () => {
         return HttpResponse.json(apiCurrentUserFixtures.userOnly);
       }),
-      http.get("/api/systemInfo", () => {
+      http.get("*/api/systemInfo", () => {
         return HttpResponse.json(systemInfoFixtures.showingNeither);
       }),
-      http.get("/api/MenuItemReview/all", () => {
+      http.get("*/api/MenuItemReview/all", () => {
         return HttpResponse.json(menuItemReviewFixtures.threeReviews);
       }),
     ],
@@ -57,16 +57,16 @@ export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.parameters = {
   msw: {
     handlers: [
-      http.get("/api/currentUser", () => {
+      http.get("*/api/currentUser", () => {
         return HttpResponse.json(apiCurrentUserFixtures.adminUser);
       }),
-      http.get("/api/systemInfo", () => {
+      http.get("*/api/systemInfo", () => {
         return HttpResponse.json(systemInfoFixtures.showingNeither);
       }),
-      http.get("/api/MenuItemReview/all", () => {
+      http.get("*/api/MenuItemReview/all", () => {
         return HttpResponse.json(menuItemReviewFixtures.threeReviews);
       }),
-      http.delete("/api/MenuItemReview", () => {
+      http.delete("*/api/MenuItemReview", () => {
         return HttpResponse.json(
           { message: "MenuItemReview with id 1 deleted" },
           { status: 200 },
