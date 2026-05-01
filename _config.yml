@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s26/team02-s26-12
 owner: ucsb-cs156-s26
 repo_name: team02-s26-12
-pull_requests: [{"author":{"id":"U_kgDOBw_Igg","is_bot":false,"login":"ArjunLovesCoding","name":""},"headRefName":"am-MenuItemReview-PageMenuItemReviewTestsAndStories","number":69,"title":"Implement MenuItemReview create page, tests, and Storybook (#34)","url":"https://github.com/ucsb-cs156-s26/team02-s26-12/pull/69"}]
+pull_requests: []
