@@ -10,7 +10,10 @@ export default {
   component: UCSBDiningCommonsMenuItemCreatePage,
 };
 
-const Template = () => <UCSBDiningCommonsMenuItemCreatePage storybook={true} />;
+const Template = () =>
+  React.createElement(UCSBDiningCommonsMenuItemCreatePage, {
+    storybook: true,
+  });
 
 export const Default = Template.bind({});
 Default.parameters = {
