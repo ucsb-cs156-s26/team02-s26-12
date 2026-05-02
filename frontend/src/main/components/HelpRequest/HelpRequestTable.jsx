@@ -39,7 +39,10 @@ export default function HelpRequestTable({
       header: "id",
       accessorKey: "id", // accessor is the "key" in the data
     },
-
+    {
+      header: "Requester Email",
+      accessorKey: "requesterEmail", // accessor is the "key" in the data
+    },
     {
       header: "Team Id",
       accessorKey: "teamId",
