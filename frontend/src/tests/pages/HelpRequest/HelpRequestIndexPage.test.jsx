@@ -103,7 +103,9 @@ describe("HelpRequestsIndexPage tests", () => {
     const teamId = screen.getByTestId(`${testId}-cell-row-0-col-teamId`);
     expect(teamId).toHaveTextContent("12");
 
-    const tableOrBreakoutRoom = screen.getByTestId(`${testId}-cell-row-0-col-tableOrBreakoutRoom`);
+    const tableOrBreakoutRoom = screen.getByTestId(
+      `${testId}-cell-row-0-col-tableOrBreakoutRoom`,
+    );
     expect(tableOrBreakoutRoom).toHaveTextContent("12");
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
