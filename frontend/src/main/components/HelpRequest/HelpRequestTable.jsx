@@ -59,7 +59,7 @@ export default function HelpRequestTable({
     {
       header: "Solved",
       accessorKey: "solved",
-    }
+    },
   ];
 
   if (hasRole(currentUser, "ROLE_ADMIN")) {
