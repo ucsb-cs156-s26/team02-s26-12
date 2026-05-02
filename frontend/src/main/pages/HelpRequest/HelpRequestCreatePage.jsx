@@ -14,13 +14,13 @@ export default function HelpRequestCreatePage({ storybook = false }) {
       tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
       explanation: helpRequest.explanation,
       solved: helpRequest.solved,
-      requestTime: helpRequest.requestTime
+      requestTime: helpRequest.requestTime,
     },
   });
 
   const onSuccess = (helpRequest) => {
     toast(
-      `New help request Created - id: ${helpRequest.id} name: ${helpRequest.requesterEmail}`,
+      `New help request Created - id: ${helpRequest.id} explanation: ${helpRequest.explanation}`,
     );
   };
 
@@ -50,5 +50,3 @@ export default function HelpRequestCreatePage({ storybook = false }) {
     </BasicLayout>
   );
 }
-
-
