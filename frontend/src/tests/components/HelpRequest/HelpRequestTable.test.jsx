@@ -21,6 +21,7 @@ describe("HelpRequestTable tests", () => {
 
   const expectedHeaders = [
     "id",
+    "Requester Email",
     "Team Id",
     "TableOrBreakoutRoom",
     "Request Time",
@@ -29,6 +30,7 @@ describe("HelpRequestTable tests", () => {
   ];
   const expectedFields = [
     "id",
+    "requesterEmail",
     "teamId",
     "tableOrBreakoutRoom",
     "requestTime",
@@ -94,6 +96,9 @@ describe("HelpRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(
       "1",
     );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-requesterEmail`),
+    ).toHaveTextContent("lzucca@ucsb.edu");
     expect(
       screen.getByTestId(`${testId}-cell-row-0-col-teamId`),
     ).toHaveTextContent("12");
