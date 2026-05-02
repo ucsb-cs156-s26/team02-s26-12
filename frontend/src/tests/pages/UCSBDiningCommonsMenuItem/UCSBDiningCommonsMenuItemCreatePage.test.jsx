@@ -113,7 +113,9 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
       name: "Baked Ziti",
       station: "Entrees",
     });
-    expect(mockToast).toBeCalledWith("New UCSBDiningCommonsMenuItem Created - id: 17");
+    expect(mockToast).toBeCalledWith(
+      "New UCSBDiningCommonsMenuItem Created - id: 17",
+    );
     expect(mockNavigate).toBeCalledWith({ to: "/diningcommonsmenuitem" });
   });
 
@@ -137,7 +139,9 @@ describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
     fireEvent.click(screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit"));
 
     await waitFor(() => {
-      expect(screen.getByText("Dining Commons Code is required.")).toBeInTheDocument();
+      expect(
+        screen.getByText("Dining Commons Code is required."),
+      ).toBeInTheDocument();
       expect(screen.getByText("Name is required.")).toBeInTheDocument();
       expect(screen.getByText("Station is required.")).toBeInTheDocument();
     });
