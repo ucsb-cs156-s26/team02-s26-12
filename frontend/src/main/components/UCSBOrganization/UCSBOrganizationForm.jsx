@@ -1,6 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router"; // <-- FIXED HERE
+import { useNavigate } from "react-router"; 
 
 function UCSBOrganizationForm({
   initialContents,
@@ -75,7 +75,7 @@ function UCSBOrganizationForm({
           data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           isInvalid={Boolean(errors.inactive)}
-          {...register("inactive", { required: "Inactive status is required" })}
+          {...register("inactive")} 
         >
           <option value="false">False</option>
           <option value="true">True</option>
@@ -89,10 +89,10 @@ function UCSBOrganizationForm({
         {buttonLabel}
       </Button>
       <Button
-        variant="secondary" // <-- FIXED HERE (lowercase 's')
+        variant="secondary" 
         onClick={() => navigate(-1)}
         data-testid={testIdPrefix + "-cancel"}
-        className="ms-2" // Added a tiny margin so buttons don't touch
+        className="ms-2" 
       >
         Cancel
       </Button>
