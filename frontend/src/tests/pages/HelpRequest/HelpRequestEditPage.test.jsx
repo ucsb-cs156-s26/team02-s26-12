@@ -125,10 +125,16 @@ describe("HelpRequestEditPage tests", () => {
       await screen.findByTestId("HelpRequestForm-id");
 
       const idField = screen.getByTestId("HelpRequestForm-id");
-      const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+      const requesterEmailField = screen.getByTestId(
+        "HelpRequestForm-requesterEmail",
+      );
       const teamIdField = screen.getByLabelText("Team Id");
-      const tableOrBreakoutRoomField = screen.getByLabelText("Table or Breakout Room");
-      const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+      const tableOrBreakoutRoomField = screen.getByLabelText(
+        "Table or Breakout Room",
+      );
+      const requestTimeField = screen.getByTestId(
+        "HelpRequestForm-requestTime",
+      );
       const explanationField = screen.getByLabelText("Explanation");
       const solvedField = screen.getByLabelText("Solved");
       const submitButton = screen.getByRole("button", { name: "Update" });
@@ -201,10 +207,16 @@ describe("HelpRequestEditPage tests", () => {
       await screen.findByTestId("HelpRequestForm-id");
 
       const idField = screen.getByTestId("HelpRequestForm-id");
-      const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+      const requesterEmailField = screen.getByTestId(
+        "HelpRequestForm-requesterEmail",
+      );
       const teamIdField = screen.getByLabelText("Team Id");
-      const tableOrBreakoutRoomField = screen.getByLabelText("Table or Breakout Room");
-      const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+      const tableOrBreakoutRoomField = screen.getByLabelText(
+        "Table or Breakout Room",
+      );
+      const requestTimeField = screen.getByTestId(
+        "HelpRequestForm-requestTime",
+      );
       const explanationField = screen.getByLabelText("Explanation");
       const solvedField = screen.getByLabelText("Solved");
       const submitButton = screen.getByRole("button", { name: "Update" });
