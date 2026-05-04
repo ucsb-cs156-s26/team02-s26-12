@@ -15,16 +15,21 @@ initialize({
 // Fresh client per story: avoids stale React Query errors and disables retries (each
 // retry re-toasts from useBackend on failure).
 export const decorators = [
-  (Story) => {
+  (Story, context) => {
     const queryClient = new QueryClient({
       defaultOptions: {
         queries: { retry: false },
         mutations: { retry: false },
       },
     });
+    const memoryRouter = context.parameters.memoryRouter;
+    const memoryRouterProps =
+      memoryRouter?.initialEntries != null
+        ? { initialEntries: memoryRouter.initialEntries }
+        : {};
     return (
       <QueryClientProvider client={queryClient}>
-        <MemoryRouter>
+        <MemoryRouter {...memoryRouterProps}>
           <ToastContainer />
           <Story />
         </MemoryRouter>
