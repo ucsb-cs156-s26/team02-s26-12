@@ -3,7 +3,6 @@ import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter } from "react-router";
-import { useNavigate } from "react-router";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
@@ -34,8 +33,18 @@ describe("UCSBOrganizationTable tests", () => {
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["Organization Code", "Short Translation", "Full Translation", "Inactive"];
-    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
+    const expectedHeaders = [
+      "Organization Code",
+      "Short Translation",
+      "Full Translation",
+      "Inactive",
+    ];
+    const expectedFields = [
+      "orgCode",
+      "orgTranslationShort",
+      "orgTranslation",
+      "inactive",
+    ];
     const testId = "UCSBOrganizationTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -48,13 +57,21 @@ describe("UCSBOrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("NSU");
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-inactive`)).toHaveTextContent("false");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("NSU");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-inactive`),
+    ).toHaveTextContent("false");
 
-    const editButton = screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    const editButton = screen.queryByTestId(
+      `${testId}-cell-row-0-col-Edit-button`,
+    );
     expect(editButton).not.toBeInTheDocument();
 
-    const deleteButton = screen.queryByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.queryByTestId(
+      `${testId}-cell-row-0-col-Delete-button`,
+    );
     expect(deleteButton).not.toBeInTheDocument();
   });
 
@@ -72,8 +89,18 @@ describe("UCSBOrganizationTable tests", () => {
       </QueryClientProvider>,
     );
 
-    const expectedHeaders = ["Organization Code", "Short Translation", "Full Translation", "Inactive"];
-    const expectedFields = ["orgCode", "orgTranslationShort", "orgTranslation", "inactive"];
+    const expectedHeaders = [
+      "Organization Code",
+      "Short Translation",
+      "Full Translation",
+      "Inactive",
+    ];
+    const expectedFields = [
+      "orgCode",
+      "orgTranslationShort",
+      "orgTranslation",
+      "inactive",
+    ];
     const testId = "UCSBOrganizationTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -86,13 +113,19 @@ describe("UCSBOrganizationTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(screen.getByTestId(`${testId}-cell-row-0-col-orgCode`)).toHaveTextContent("NSU");
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-orgCode`),
+    ).toHaveTextContent("NSU");
 
-    const editButton = screen.getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    const editButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Edit-button`,
+    );
     expect(editButton).toBeInTheDocument();
     expect(editButton).toHaveClass("btn-primary");
 
-    const deleteButton = screen.getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.getByTestId(
+      `${testId}-cell-row-0-col-Delete-button`,
+    );
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
   });
@@ -112,10 +145,14 @@ describe("UCSBOrganizationTable tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`)).toHaveTextContent("NSU");
+      expect(
+        screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`),
+      ).toHaveTextContent("NSU");
     });
 
-    const editButton = screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-Edit-button`);
+    const editButton = screen.getByTestId(
+      `UCSBOrganizationTable-cell-row-0-col-Edit-button`,
+    );
     expect(editButton).toBeInTheDocument();
 
     fireEvent.click(editButton);
@@ -145,16 +182,19 @@ describe("UCSBOrganizationTable tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`)).toHaveTextContent("NSU");
+      expect(
+        screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-orgCode`),
+      ).toHaveTextContent("NSU");
     });
 
-    const deleteButton = screen.getByTestId(`UCSBOrganizationTable-cell-row-0-col-Delete-button`);
+    const deleteButton = screen.getByTestId(
+      `UCSBOrganizationTable-cell-row-0-col-Delete-button`,
+    );
     expect(deleteButton).toBeInTheDocument();
 
     fireEvent.click(deleteButton);
 
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
-    // Verify that it passes orgCode as the parameter
     expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "NSU" });
   });
 });
