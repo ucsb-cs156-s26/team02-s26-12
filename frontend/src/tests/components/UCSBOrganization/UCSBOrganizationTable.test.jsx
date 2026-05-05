@@ -1,4 +1,5 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -196,5 +197,31 @@ describe("UCSBOrganizationTable tests", () => {
 
     await waitFor(() => expect(axiosMock.history.delete.length).toBe(1));
     expect(axiosMock.history.delete[0].params).toEqual({ orgCode: "NSU" });
+  });
+  test("cellToAxiosParamsDelete returns correct params", () => {
+    // arrange
+    const cell = { row: { original: { orgCode: "NSU" } } };
+
+    // act
+    const result = cellToAxiosParamsDelete(cell);
+
+    // assert
+    expect(result).toEqual({
+      url: "/api/ucsborganization",
+      method: "DELETE",
+      params: { orgCode: "NSU" },
+    });
+  });
+
+  test("onDeleteSuccess calls console.log", () => {
+    // arrange
+    const consoleSpy = vi.spyOn(console, "log");
+    const message = "Organization deleted";
+
+    // act
+    onDeleteSuccess(message);
+
+    // assert
+    expect(consoleSpy).toHaveBeenCalledWith(message);
   });
 });
