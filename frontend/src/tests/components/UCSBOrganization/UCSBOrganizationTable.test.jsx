@@ -1,5 +1,8 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/components/UCSBOrganization/UCSBOrganizationTable";
+import {
+  cellToAxiosParamsDelete,
+  onDeleteSuccess,
+} from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
