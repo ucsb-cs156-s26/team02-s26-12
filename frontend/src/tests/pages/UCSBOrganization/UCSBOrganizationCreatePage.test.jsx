@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { MemoryRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { MemoryRouter } from "react-router";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import { expect } from "vitest";
 
 describe("UCSBOrganizationCreatePage tests", () => {
   const axiosMock = new AxiosMockAdapter(axios);
@@ -25,6 +26,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
   const queryClient = new QueryClient();
   test("Renders expected content", async () => {
     // arrange
+
     setupUserOnly();
 
     // act
@@ -37,6 +39,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
     );
 
     // assert
+
     await screen.findByText("Create page not yet implemented");
     expect(
       screen.getByText("Create page not yet implemented"),
