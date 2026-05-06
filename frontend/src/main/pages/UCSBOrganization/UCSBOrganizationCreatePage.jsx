@@ -1,11 +1,10 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import UCSBOrganizationForm from "main/components/UCSBOrganization/UCSBOrganizationForm";
-import { Navigate } from 'react-router-dom'
+import { Navigate } from "react-router";
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 
-export default function UCSBOrganizationCreatePage({storybook=false}) {
-
+export default function UCSBOrganizationCreatePage({ storybook = false }) {
   const objectToAxiosParams = (organization) => ({
     url: "/api/ucsborganization/post",
     method: "POST",
@@ -13,29 +12,29 @@ export default function UCSBOrganizationCreatePage({storybook=false}) {
       orgCode: organization.orgCode,
       orgTranslationShort: organization.orgTranslationShort,
       orgTranslation: organization.orgTranslation,
-      inactive: organization.inactive
-    }
+      inactive: organization.inactive,
+    },
   });
 
   const onSuccess = (organization) => {
     toast(`New organization Created - orgCode: ${organization.orgCode}`);
-  }
+  };
 
   const mutation = useBackendMutation(
     objectToAxiosParams,
-     { onSuccess }, 
-     // Stryker disable next-line all : hard to set up test for caching
-     ["/api/ucsborganization/all"]
-     );
+    { onSuccess },
+    // Stryker disable next-line all : hard to set up test for caching
+    ["/api/ucsborganization/all"],
+  );
 
-  const { isSuccess } = mutation
+  const { isSuccess } = mutation;
 
   const onSubmit = async (data) => {
     mutation.mutate(data);
-  }
+  };
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/ucsborganization" />
+    return <Navigate to="/ucsborganization" />;
   }
 
   return (
@@ -45,5 +44,5 @@ export default function UCSBOrganizationCreatePage({storybook=false}) {
         <UCSBOrganizationForm submitAction={onSubmit} />
       </div>
     </BasicLayout>
-  )
+  );
 }
