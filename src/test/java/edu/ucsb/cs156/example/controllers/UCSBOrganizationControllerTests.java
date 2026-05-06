@@ -21,18 +21,18 @@ import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest(controllers = UCSBOrganizationController.class)
 @Import(TestConfig.class)
 public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
-  @MockitoBean UCSBOrganizationRepository ucsbOrganizationRepository;
+  @MockBean UCSBOrganizationRepository ucsbOrganizationRepository;
 
-  @MockitoBean UserRepository userRepository;
+  @MockBean UserRepository userRepository;
 
   // --- Authorization tests for /api/ucsborganization/all ---
 
@@ -166,7 +166,10 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
 
     // act
     MvcResult response =
-        mockMvc.perform(get("/api/ucsborganization?id=ZPR")).andExpect(status().isOk()).andReturn();
+        mockMvc
+            .perform(get("/api/ucsborganization?orgCode=ZPR"))
+            .andExpect(status().isOk())
+            .andReturn();
 
     // assert
     verify(ucsbOrganizationRepository, times(1)).findById(eq("ZPR"));
@@ -185,7 +188,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     // act
     MvcResult response =
         mockMvc
-            .perform(get("/api/ucsborganization?id=FAKE"))
+            .perform(get("/api/ucsborganization?orgCode=FAKE"))
             .andExpect(status().isNotFound())
             .andReturn();
 
@@ -196,7 +199,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     assertEquals("UCSBOrganization with id FAKE not found", json.get("message"));
   }
 
-  // --- Tests for PUT /api/ucsborganization?id=... ---
+  // --- Tests for PUT /api/ucsborganization?orgCode=... ---
 
   @WithMockUser(roles = {"ADMIN", "USER"})
   @Test
@@ -226,7 +229,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     MvcResult response =
         mockMvc
             .perform(
-                put("/api/ucsborganization?id=SKY")
+                put("/api/ucsborganization?orgCode=SKY")
                     .contentType("application/json")
                     .content(requestBody)
                     .with(csrf()))
@@ -260,7 +263,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     MvcResult response =
         mockMvc
             .perform(
-                put("/api/ucsborganization?id=FAKE")
+                put("/api/ucsborganization?orgCode=FAKE")
                     .contentType("application/json")
                     .content(requestBody)
                     .with(csrf()))
@@ -292,7 +295,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     // act
     MvcResult response =
         mockMvc
-            .perform(delete("/api/ucsborganization").param("id", "ZPR").with(csrf()))
+            .perform(delete("/api/ucsborganization").param("orgCode", "ZPR").with(csrf()))
             .andExpect(status().isOk())
             .andReturn();
 
@@ -315,7 +318,7 @@ public class UCSBOrganizationControllerTests extends ControllerTestCase {
     // act
     MvcResult response =
         mockMvc
-            .perform(delete("/api/ucsborganization").param("id", "FAKE").with(csrf()))
+            .perform(delete("/api/ucsborganization").param("orgCode", "FAKE").with(csrf()))
             .andExpect(status().isNotFound())
             .andReturn();
 
