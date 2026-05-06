@@ -1,5 +1,5 @@
 import React from "react";
-import { MemoryRouter, Routes, Route } from "react-router";
+import { Routes, Route } from "react-router";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { http, HttpResponse } from "msw";
@@ -20,19 +20,21 @@ export default {
   component: MenuItemReviewEditPage,
 };
 
+// Uses preview MemoryRouter only; set initial route via parameters.router.initialEntries
 const Template = () => (
-  <MemoryRouter initialEntries={["/menuitemreview/edit/17"]}>
-    <Routes>
-      <Route
-        path="/menuitemreview/edit/:id"
-        element={<MenuItemReviewEditPage storybook={true} />}
-      />
-    </Routes>
-  </MemoryRouter>
+  <Routes>
+    <Route
+      path="/menuitemreview/edit/:id"
+      element={<MenuItemReviewEditPage storybook={true} />}
+    />
+  </Routes>
 );
 
 export const Default = Template.bind({});
 Default.parameters = {
+  router: {
+    initialEntries: ["/menuitemreview/edit/17"],
+  },
   msw: {
     handlers: [
       http.get("*/api/currentUser", () => {
