@@ -1,29 +1,33 @@
-import React from "react";
-import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
-import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { rest } from "msw";
-
 import UCSBOrganizationCreatePage from "main/pages/UCSBOrganization/UCSBOrganizationCreatePage";
+import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
+import { http, HttpResponse } from "msw";
 
 export default {
-  title: "pages/UCSBOrganization/UCSBOrganizationCreatePage",
-  component: UCSBOrganizationCreatePage,
+    title: 'pages/UCSBOrganization/UCSBOrganizationCreatePage',
+    component: UCSBOrganizationCreatePage
 };
 
 const Template = () => <UCSBOrganizationCreatePage storybook={true} />;
 
 export const Default = Template.bind({});
 Default.parameters = {
-  msw: [
-    rest.get("/api/currentUser", (_req, res, ctx) => {
-      return res(ctx.json(apiCurrentUserFixtures.userOnly));
-    }),
-    rest.get("/api/systemInfo", (_req, res, ctx) => {
-      return res(ctx.json(systemInfoFixtures.showingNeither));
-    }),
-    rest.post("/api/ucsborganization/post", (req, res, ctx) => {
-      window.alert("POST: " + JSON.stringify(req.url));
-      return res(ctx.status(200), ctx.json(req.url.searchParams));
-    }),
-  ],
-};
+    msw: [
+        http.get('/api/currentUser', () => {
+            return HttpResponse.json(apiCurrentUserFixtures.userOnly, {
+                status: 200,
+            });
+        }),
+        http.get('/api/systemInfo', () => {
+            return HttpResponse.json(systemInfoFixtures.showingNeither, {
+                status: 200,
+            });
+        }),
+        http.post('/api/ucsborganization/post', () => {
+            window.alert("POST: /api/ucsborganization/post");
+            return HttpResponse.json({}, {
+                status: 200,
+            });
+        }),
+    ]
+}
