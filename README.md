@@ -8,14 +8,14 @@ Deployments:
 * QA: <https://team02-qa.dokku-12.cs.ucsb.edu>
 * Dev (example): <https://team02-arjunmalaviya-dev.dokku-12.cs.ucsb.edu>
 
-| Table                     | Name         | Github Id |
-|---------------------------|--------------|-----------|
-| UCSBDiningCommonsMenuItem |              |           |
-| UCSBOrganization          |              |           |
-| RecommendationRequest     |              |           |
-| MenuItemReview            | Arjun Malaviya | arjunmalaviya |
-| HelpRequest               |              |           |
-| Articles                  |              |           |
+| Table                     | Name         | Github Id       |
+|---------------------------|--------------|-----------------|
+| UCSBDiningCommonsMenuItem |Jay Yeung     |JayYeung5        |
+| UCSBOrganization          |Pau Marsa     |MrPau13          |
+| RecommendationRequest     |Pengyu Chen   |Deb1tto           |
+| MenuItemReview            |Arjun Malaviya|ArjunLovesCoding |
+| HelpRequest               |Lorenzo Zucca |lzuccaucsb       |
+| Articles                  |Arjun Shah    |ArjunUCSB        |
 
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work
