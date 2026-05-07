@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Routes } from "react-router";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
@@ -13,22 +12,12 @@ export default {
 };
 
 const Template = () =>
-  React.createElement(
-    Routes,
-    null,
-    React.createElement(Route, {
-      path: "/diningcommonsmenuitem/edit/:id",
-      element: React.createElement(UCSBDiningCommonsMenuItemEditPage, {
-        storybook: true,
-      }),
-    }),
-  );
+  React.createElement(UCSBDiningCommonsMenuItemEditPage, {
+    storybook: true,
+  });
 
 export const Default = Template.bind({});
 Default.parameters = {
-  memoryRouter: {
-    initialEntries: ["/diningcommonsmenuitem/edit/1"],
-  },
   msw: {
     handlers: [
       http.get("/api/currentUser", () => {
