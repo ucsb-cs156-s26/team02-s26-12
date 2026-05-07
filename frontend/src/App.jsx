@@ -148,13 +148,6 @@ function App() {
       {hasRole(currentUser, "ROLE_USER") && (
         <>
           <Route exact path="/articles" element={<ArticlesIndexPage />} />
-      {hasRole(currentUser, "ROLE_USER") && (
-        <>
-          <Route
-            exact
-            path="/diningcommonsmenuitem"
-            element={<UCSBDiningCommonsMenuItemIndexPage />}
-          />
         </>
       )}
       {hasRole(currentUser, "ROLE_ADMIN") && (
@@ -168,6 +161,22 @@ function App() {
             exact
             path="/articles/create"
             element={<ArticlesCreatePage />}
+          />
+        </>
+      )}
+      {hasRole(currentUser, "ROLE_USER") && (
+        <>
+          <Route
+            exact
+            path="/diningcommonsmenuitem"
+            element={<UCSBDiningCommonsMenuItemIndexPage />}
+          />
+        </>
+      )}
+      {hasRole(currentUser, "ROLE_ADMIN") && (
+        <>
+          <Route
+            exact
             path="/diningcommonsmenuitem/edit/:id"
             element={<UCSBDiningCommonsMenuItemEditPage />}
           />
