@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 
 import RecommendationRequestTable from "main/components/RecommendationRequest/RecommendationRequestTable";
-import { recommendationRequestFixtures } from "main/fixtures/recommendationRequestFixtures";
+import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 describe("RecommendationRequestTable tests", () => {
   const h = React.createElement;

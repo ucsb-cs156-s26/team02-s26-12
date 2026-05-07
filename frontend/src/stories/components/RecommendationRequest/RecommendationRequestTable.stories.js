@@ -1,6 +1,6 @@
 import React from "react";
 import RecommendationRequestTable from "main/components/RecommendationRequest/RecommendationRequestTable";
-import { recommendationRequestFixtures } from "main/fixtures/recommendationRequestFixtures";
+import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 export default {
   title: "components/RecommendationRequest/RecommendationRequestTable",
