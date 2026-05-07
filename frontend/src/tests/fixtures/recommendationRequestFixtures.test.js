@@ -1,4 +1,4 @@
-import { recommendationRequestFixtures } from "main/fixtures/recommendationRequestFixtures";
+import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 describe("recommendationRequestFixtures tests", () => {
   test("fixtures have the expected contents", () => {
