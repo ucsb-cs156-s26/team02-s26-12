@@ -22,14 +22,10 @@ export const decorators = [
         mutations: { retry: false },
       },
     });
-    const memoryRouter = context.parameters.memoryRouter;
-    const memoryRouterProps =
-      memoryRouter?.initialEntries != null
-        ? { initialEntries: memoryRouter.initialEntries }
-        : {};
+    const initialEntries = context.parameters?.router?.initialEntries ?? ["/"];
     return (
       <QueryClientProvider client={queryClient}>
-        <MemoryRouter {...memoryRouterProps}>
+        <MemoryRouter initialEntries={initialEntries}>
           <ToastContainer />
           <Story />
         </MemoryRouter>
